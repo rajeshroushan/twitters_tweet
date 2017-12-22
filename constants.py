@@ -1,0 +1,10 @@
+import datetime
+
+# oauth credentials
+CONSUMER_KEY = ["HXhJ7weLPFtpdt1YEFvbUJgsm",]
+
+CONSUMER_SECRET = ["S6YFlae3ky01XLd8y0tYRVWaVtQ2qWw7O3HbFe3cCi4qlgNS8Y"]
+
+OAUTH_TOKEN = ["2989161382-BVVF8qe42ZCMT7mulSueCe9mxbqkrQ5XE5iePts"]
+
+ACCESS_TOKEN_SECRET = ["pB6p71BZe2XX99eMzD4KpXKb6UtfFUtTFxLKHRitr3Y8F"]

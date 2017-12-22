@@ -1,0 +1,1 @@
+This project will collect the user profile of all the creator which is listed in the table channelinfo on the daily basis.

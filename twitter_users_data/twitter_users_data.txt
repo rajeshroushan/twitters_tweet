@@ -1,0 +1,115 @@
+This cron 30 00 * * * nohup python -W ignore /home/ubuntu/ebs/workspace/python/Data_Crawling/twitter_users_data/collect_twitter_users_data.py >/home/ubuntu/ebs/workspace/data/twitter_data/log/data_op.log 2>/home/ubuntu/ebs/workspace/data/twitter_data/log/twitter_error.log </dev/null &  which runs on cronode server(ip:52.70.219.120) will do the whole process
+Help on module collect_twitter_users_data:
+
+NAME
+    collect_twitter_users_data
+
+FILE
+    /data/workspace/vidooly/Data_Crawling/twitter_users_data/collect_twitter_users_data.py
+
+CLASSES
+    __builtin__.object
+        CollectTwitterData
+    
+    class CollectTwitterData(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |  
+     |  close_db_connection(self)
+     |      close all db connections
+     |  
+     |  connect_to_mysql(self)
+     |      This function will be used return  mysql connections
+     |  
+     |  get_twitter_screen_name(self)
+     |      :return:This function will collect unique screen_name from mysql
+     |      table channelinfo in bunch of 600
+     |  
+     |  get_twitter_user_profile(self, twitter_users, client)
+     |      This function will collect the twitter users public profile data
+     |      :param twitter_users:twitter screen name
+     |      :param client:twitter auth client
+     |      :return:None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FUNCTIONS
+    collect_additional_users_data()
+        This function will collect all the twitter screen which
+        are not present in the table channelinfo
+        :return:None
+    
+    collect_twitter_data()
+        This function will collect the twusers and call another method to collect twitter data
+        :return:None
+    
+    put_data_file_over_s3(_file)
+        This function will upload the data file over s3
+        :param _file:file to be uploaded
+        :return:
+    
+    upload_file(offset=None, start_time=None)
+        This function will upload the file and print execution time
+        :param offset:offset
+        :param start_time:as name suggest
+        :return:None
+
+
+Help on module push_processed_data_in_red_shift:
+
+NAME
+    push_processed_data_in_red_shift
+
+FILE
+    /data/workspace/vidooly/Data_Crawling/twitter_users_data/push_processed_data_in_red_shift.py
+
+CLASSES
+    __builtin__.object
+        Db
+    
+    class Db(__builtin__.object)
+     |  Methods defined here:
+     |  
+     |  __init__(self)
+     |  
+     |  connect_to_red_shift(self)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FUNCTIONS
+    execute_query(query)
+        just execute the redshift query
+        :param query:as name suggest
+        :return:None
+    
+    get_file_to_be_pushe_to_red_shift()
+        :return:daily basis uploaded file path to s3
+    
+    get_query_string(data_file_tobe_push, table_name)
+        :param data_file_tobe_push:file data to be pushed in redshift table
+        :param table_name:as name suggest
+        :return:
+    
+    push_data_red_shift()
+        This function will just push the collected yesterday data in redshift table
+        :return:None
+
+DATA
+    logger = <logging.RootLogger object>
+
+
